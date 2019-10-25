@@ -81,5 +81,22 @@ namespace Library.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public ActionResult AddFlavor(int id)
+        {
+            Treat foundtreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
+            ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "FlavorName");
+            return View(foundtreat);
+        }
+        [HttpPost, ActionName("AddFlavor")]
+        public ActionResult AddFlavor(int id, Flavor flavor)
+        {
+            if (id != 0)
+            {
+                _db.TreatFlavors.Add(new TreatFlavor() { FlavorId = flavor.FlavorId, TreatId = id });
+            }
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
