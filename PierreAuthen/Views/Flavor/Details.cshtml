@@ -9,18 +9,18 @@
     <div class="card-body">
         <h1 class="card-title text-center"><u>@Model.FlavorName</u></h1>
         <h3>FlavorId: @Model.FlavorId</h3>
-        @Html.ActionLink("Update This Flavor","Update","Flavor", new {id = Model.FlavorId}, new { @class = "button btn btn-info"})
+        @Html.ActionLink("Update This Flavor","Edit","Flavor", new {id = Model.FlavorId}, new { @class = "button btn btn-info"})
         @Html.ActionLink("Add a Treat to this Flavor", "AddTreat", "Flavor", new {id = Model.FlavorId}, new { @class = "button btn btn-success"})
-        @Html.ActionLink("Delete This Flavor","Delete","Book", new {id = Model.FlavorId}, new { @class = "button btn btn-warning "})
+        @Html.ActionLink("Delete This Flavor","Delete","Flavor", new {id = Model.FlavorId}, new { @class = "button btn btn-warning "})
     </div>     
-</div>
 </div>
 <div class="card">
     <div class="card-body">
         <h2 class="card-title text-center"><u>Associated Treats</u></h1>
         @foreach (TreatFlavor treatflavor in Model.Treats)
         {
-            <h2>By: @Html.ActionLink($"{treatflavor.Treat.TreatName}", "Details", "Treat", new {id = treatflavor.Treat.TreatId})</h2>
+
+            <h2> @treatflavor.Treat.TreatName @Html.ActionLink($"{treatflavor.Treat.TreatName}", "Details", "Treat", new {id = treatflavor.Treat.TreatId})</h2>
         }
     </div>     
 </div>

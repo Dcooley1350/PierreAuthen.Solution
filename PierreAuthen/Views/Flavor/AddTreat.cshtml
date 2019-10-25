@@ -1,0 +1,23 @@
+@{
+    Layout = "_Layout";
+}
+@model PierreAuthen.Models.Flavor;
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Add Treat to @Model.FlavorName</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class ="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.FlavorId)
+            @Html.HiddenFor(model => model.FlavorName)
+
+            @Html.Label("Treat")
+            @Html.DropDownList("TreatId")
+            <br>
+            <input type="submit" value="Save" class="btn button btn-info";>
+        }
+    </div>
+</div>

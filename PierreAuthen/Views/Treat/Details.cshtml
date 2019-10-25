@@ -9,7 +9,7 @@
     <div class="card-body">
         <h1 class="card-title text-center"><u>@Model.TreatName</u></h1>
         <h3>TreatId: @Model.TreatId</h3>
-        @Html.ActionLink("Update This Treat","Update","Treat", new {id = Model.TreatId}, new { @class = "button btn btn-info"})
+        @Html.ActionLink("Update This Treat","Edit","Treat", new {id = Model.TreatId}, new { @class = "button btn btn-info"})
         @Html.ActionLink("Add a Flavor to this Treat", "AddTreat", "Treat", new {id = Model.TreatId}, new { @class = "button btn btn-success"})
         @Html.ActionLink("Delete This Treat","Delete","Treat", new {id = Model.TreatId}, new { @class = "button btn btn-warning "})
     </div>     
