@@ -4,34 +4,30 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PierreAuthen.Solution.Models;
+using PierreAuthen.Models;
+using PierreAuthen.ViewModels;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PierreAuthen.Solution.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly PierreAuthenContext _db;
+        private readonly UserManager<ApplicationUser> _userManager;
+        public HomeController(UserManager<ApplicationUser> userManager, PierreAuthenContext db)
         {
-            _logger = logger;
+            _userManager = userManager;
+            _db = db;
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+    [HttpGet("/")]
+    public ActionResult Index()
+    {
+        List<Flavor> foundFlavors = _db.Flavors.ToList();
+        List<Treat> foundTreats = _db.Treats.ToList();
+        HomeIndexViewModel viewModel = new HomeIndexViewModel(foundTreats,foundFlavors);
+        return View(viewModel);   
+    }
     }
 }

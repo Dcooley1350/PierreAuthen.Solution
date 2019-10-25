@@ -3,23 +3,25 @@
 }
 @model HomeIndexViewModel
 <div class="card text-center">
-    <h1 class="display-4">Welcome To Pierre's</h1>
+    <h1 class="display-4"><em>Welcome To Pierre's</em></h1>
 </div>
 <div class="row">
     <div class="col-md-6">
         <div class="card">
             <div class ="card-body">
-                <h2 class="card-title">Treats</h2>
+                <h2 class="text-center card-title">Treats</h2>
                 @if(@Model.AllTreats.Count ==0)
                 {
-                    <h4><i>There are no treats in the database at this time.</i></h2>
+                    <h4><i>There are no treats in the database at this time.</i></h4>
                 }
                 else
                 {
+                    <ul>
                     @foreach(Treat treat in Model.AllTreats)
                     {
-                        <h4>@Html.ActionLink($"{treat.TreatName}", "Details","Treat", new { id = treat.TreatId})</h4>
+                        <li><h4>@Html.ActionLink($"{treat.TreatName}", "Details","Treat", new { id = treat.TreatId})</h4></li>
                     }
+                    </ul>
                 }
             </div>
         </div>
@@ -27,17 +29,19 @@
     <div class="col-md-6">
         <div class="card">
             <div class ="card-body">
-                <h2 class="card-title">Flavors</h2>
+                <h2 class="text-center card-title">Flavors</h2>
                 @if(@Model.AllFlavors.Count ==0)
                 {
-                    <h4><i>There are no flavors in the database at this time.</i></h2>
+                    <h4><i>There are no flavors in the database at this time.</i></h4>
                 }
                 else
                 {
+                    <ul>
                     @foreach(Flavor flavor in Model.AllFlavors)
                     {
-                        <h4>@Html.ActionLink($"{flavor.FlavorName}", "Details","Flavor", new { id = flavor.FlavorId})</h4>
+                        <li><h4>@Html.ActionLink($"{flavor.FlavorName}", "Details","Flavor", new { id = flavor.FlavorId})</h4><li>
                     }
+                    </ul>
                 }
             </div>
         </div>
