@@ -48,6 +48,7 @@ namespace Library.Controllers
         {
             Flavor thisFlavor = _db.Flavors
             .Include(flavor => flavor.Treats)
+            .ThenInclude(join => join.Treat)
             .FirstOrDefault(flavor => flavor.FlavorId == id);
  
  

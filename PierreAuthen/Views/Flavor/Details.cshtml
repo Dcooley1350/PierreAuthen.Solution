@@ -18,9 +18,9 @@
 <div class="card">
     <div class="card-body">
         <h2 class="card-title text-center"><u>Associated Treats</u></h1>
-        @foreach (Treat treat in Model.Treats)
+        @foreach (TreatFlavor treatflavor in Model.Treats)
         {
-            <h2>By: @Html.ActionLink($"{treat.TreatName}", "Details", "Treat", new {id = treat.TreatId})</h2>
+            <h2>By: @Html.ActionLink($"{treatflavor.Treat.TreatName}", "Details", "Treat", new {id = treatflavor.Treat.TreatId})</h2>
         }
     </div>     
 </div>
