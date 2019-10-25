@@ -1,0 +1,13 @@
+@{
+    Layout = "_Layout";
+}
+@model PierreAuthen.Models.Treat
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-danger text-center">Are you sure you would like to delete <u>@Model.TreatName</u>?</h1>
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="Delete Treat" class="btn button btn-danger text-center"/>
+        } 
+    </div>     
+</div>

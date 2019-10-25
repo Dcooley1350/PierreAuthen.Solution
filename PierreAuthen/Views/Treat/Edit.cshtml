@@ -1,0 +1,21 @@
+@{
+    Layout = "_Layout";
+}
+@model PierreAuthen.Models.Treat;
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Update Treat: @Model.TreatName</h1>
+    </div>     
+</div>
+<div class="card">
+    <div class ="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.TreatId)
+            @Html.LabelFor(model => model.TreatName)
+            @Html.TextBoxFor(model => model.TreatName, new {@class = "form-control"})
+            <br>
+            <input type="submit" value="Save" class="btn button btn-info";>
+        }
+    </div>
+</div>
