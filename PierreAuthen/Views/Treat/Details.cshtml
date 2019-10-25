@@ -8,18 +8,18 @@
 <div class="card">
     <div class="card-body">
         <h1 class="card-title text-center"><u>@Model.TreatName</u></h1>
-        <h3>TreatId: @Model.FlavorId</h3>
-        @Html.ActionLink("Update This Flavor","Update","Flavor", new {id = Model.FlavorId}, new { @class = "button btn btn-info"})
-        @Html.ActionLink("Add a Treat to this Flavor", "AddTreat", "Flavor", new {id = Model.FlavorId}, new { @class = "button btn btn-success"})
-        @Html.ActionLink("Delete This Flavor","Delete","Book", new {id = Model.FlavorId}, new { @class = "button btn btn-warning "})
+        <h3>TreatId: @Model.TreatId</h3>
+        @Html.ActionLink("Update This Treat","Update","Treat", new {id = Model.TreatId}, new { @class = "button btn btn-info"})
+        @Html.ActionLink("Add a Flavor to this Treat", "AddTreat", "Treat", new {id = Model.TreatId}, new { @class = "button btn btn-success"})
+        @Html.ActionLink("Delete This Treat","Delete","Treat", new {id = Model.TreatId}, new { @class = "button btn btn-warning "})
     </div>     
 </div>
 <div class="card">
     <div class="card-body">
         <h2 class="card-title text-center"><u>Associated Flavors</u></h1>
-        @foreach (Flavor flavor in Model.Flavors)
+        @foreach (TreatFlavor treatflavor in Model.Flavors)
         {
-            <h2>By: @Html.ActionLink($"{flavor.FlavorName}", "Details", "Flavor", new {id = flavor.FlavorId})</h2>
+            <h2>By: @Html.ActionLink($"{treatflavor.Flavor.FlavorName}", "Details", "Flavor", new {id = treatflavor.Flavor.FlavorId})</h2>
         }
     </div>     
 </div>
