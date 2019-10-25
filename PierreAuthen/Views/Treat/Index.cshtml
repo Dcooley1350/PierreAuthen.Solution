@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title text-center">Treats</h1>
+    </div>
+        <a href="/Treat/Create" class = "button btn btn-success">Add Treat</a>
+</div>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Treats</h3>
+        @if(@Model.Count == 0)
+        {
+            <h2><i>There are no Treats in the Database at this time.</i></h2>
+        }
+        else
+        {
+           
+            @foreach(Treat treat in Model)
+            {
+                <h2>@Html.ActionLink($"{treat.TreatName}", "Details","Treat", new { id = treat.TreatId})</h2>              
+            }
+            
+        }
+    </div>
+</div>
