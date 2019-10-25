@@ -1,8 +1,46 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@model HomeIndexViewModel
+<div class="card text-center">
+    <h1 class="display-4">Welcome To Pierre's</h1>
 </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class ="card-body">
+                <h2 class="card-title">Treats</h2>
+                @if(@Model.AllTreats.Count ==0)
+                {
+                    <h4><i>There are no treats in the database at this time.</i></h2>
+                }
+                else
+                {
+                    @foreach(Treat treat in Model.AllTreats)
+                    {
+                        <h4>@Html.ActionLink($"{treat.TreatName}", "Details","Treat", new { id = treat.TreatId})</h4>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class ="card-body">
+                <h2 class="card-title">Flavors</h2>
+                @if(@Model.AllFlavors.Count ==0)
+                {
+                    <h4><i>There are no flavors in the database at this time.</i></h2>
+                }
+                else
+                {
+                    @foreach(Flavor flavor in Model.AllFlavors)
+                    {
+                        <h4>@Html.ActionLink($"{flavor.FlavorName}", "Details","Flavor", new { id = flavor.FlavorId})</h4>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
